@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+  <project name="Andrew's Assignment 3 JUnit w/ Ant" basedir="." default="test">
+  
+  
+    <!-- set global properties for this build -->
+    <property name="src.dir" location="src"/>
+    <property name="src.dir.main" location="src/main"/>
+    <property name="src.dir.test" location="src/test"/>
+    <property name="dest.dir" location="build"/>
+    <property name="dest.dir.classes" location="build/classes"/>
+    <property name="lib.dir" location="lib"/>
+    
+    <path id="build.class.path">
+      <fileset dir="${lib.dir}">
+        <include name="*.jar"/>
+      </fileset>
+    </path>
+    
+    <path id="test.class.path">
+      <pathelement location="${dest.dir.classes}"/>
+    </path>
+    
+    <target name="info">
+      <echo>Apache Ant using default build.xml file</echo>
+    </target>
+    
+    <target name="test" depends="info,compile">
+      <junit>
+        <test name="andrew.assignment3.ant.BinaryTreeTestCase"/>
+        <classpath refid="build.class.path"/>
+        <classpath refid="test.class.path"/>
+        <formatter type="plain" usefile="false"/>
+      </junit>
+    </target>
+    
+    <target name="compile" depends="clean,prepare">
+      <javac srcdir="${src.dir.main}/andrew/assignment3/ant"
+             destdir="${dest.dir.classes}"
+             includeAntRuntime="false">
+        <classpath refid="build.class.path"/>
+      </javac>
+      <javac srcdir="${src.dir.test}/andrew/assignment3/ant"
+             destdir="${dest.dir.classes}"
+             includeAntRuntime="false">
+        <classpath refid="build.class.path"/>
+      </javac>
+    </target>
+    
+    <target name="prepare">
+      <mkdir dir="${dest.dir}"/>
+      <mkdir dir="${dest.dir.classes}"/>
+    </target>
+    
+    <target name="clean">
+      <delete dir="${dest.dir}"/>
+    </target>
+    
+  </project>
+  
+  
+  
+  

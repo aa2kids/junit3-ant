@@ -1,0 +1,146 @@
+Text regarding this software is in two parts.
+
+First part describes the software application and its tests
+which are written for JUnit 3 framework.
+
+Second part describes how to place for automated build and
+testing under ant.
+
+Start of text descriptions:
+
+Part One:
+
+Lab Description 
+This exercise helps you build a test case with JUnit version 3.x using Eclipse
+NOTE:  I used and include jar for JUnit 3.8.2 and compiled under Java 7
+
+1.	Build the application
+-	Build an application, which sorts 7 random string, comma delimitated names
+        using binary tree (e.g. String input = "Peggy, John, Steve, Albert, ...";)
+-	Use  the following methods for your application 
+	* populateTree  //This method populates the tree 
+	* traverseTree  //This method displays sorted name 
+ 	* countNode    //This method counts all the nodes in the tree
+	* countLeaf      // This method counts leafs in the tree
+	* printFrontToBack,   //This method prints forward and  
+                                             //backward from any node in the tree
+-	Binary tree
+	* This is a tree which each node has two children
+	* Left node is smaller than the parent and right node is greater than the parent 
+	* Example 
+	1. This is an example which shows how to build binary tree from
+	   this array of integers : [7, 5, 4, 3, 6, 1, 2]
+	*	                 7           -------> root
+	*	            5             
+	*	       4       6
+	*	   3
+	*	1
+	*	    2
+	
+2.	Build JUnit 3.x test case to test all methods of the application 
+-	Class BinaryTreeTestCase extends TestCase {
+	* setup()
+	* testXXXX()    // one method for each application function 
+	* teardown()
+	* suite()
+	* main()
+	}
+	
+3.	Build a suite of test cases to test all methods of the application
+
+
+Lab Process 
+  
+1.	Build your application for test as follow
+
+-	Node class 
+	  public class Node  {
+   	    //instance variables 
+   	    //constructor  
+   	    // methods
+	  }
+	
+-	BinaryTreeApp Class
+	  public class BinaryTreeApp {
+           //application methods 
+             populateTree  (...)
+             traverseTree(...)
+             countNode (...)
+             countLeaf (...)
+             printFrontToBack (...)
+ 	  }       
+
+2.	Build the JUnit Test case for JUnit3
+-	Your test case template would be like this 
+           public class BinaryTreeTestCase extends TestCase {
+              // instance/class variables
+              // constructor
+              // test methods 
+              protected void setup() throws Exception {
+              }
+              public void testPopulateTree ()  throws Exception {
+              }
+              // ........ other methods ........
+              protected void tearDown() throws Exception {
+              } 
+              public static Test suite() {
+              }
+              public  static void main (..) {
+                //build TestResult object and display how many 
+                // testcases passed or failed with error
+              }
+            }
+            
+3.	Build and run the eclipse project
+	* Create a java project and name it "testbinarytree"
+	* Create a package under the project and name it
+	  "yourname.assignment2.junit3.binarytree"
+	   (e.g.  susan.assignment2.junit3.binarytree)
+	* Compile and run the test case as 
+	i.   JUnit Test
+	ii.  Java Application
+	
+	
+	
+Part Two:
+
+Lab Description 
+This exercise helps you automate your test cases using Apache Ant and JUnit
+
+Use your application written in assignment-2, create folder structure,
+create an Ant file, run the ant file from the command line.
+
+
+Refer to the Lab Process for more details.
+ 
+Lab Process 
+   
+1.	Create your application
+	* Use your application written in assignment-2. 
+
+2.	Create JUnit Test cases 
+	* Use your JUnit test cases written in assignment-2  
+                        
+3.	Create folder structure
+	- Create a development folder (e.g. junitDev or junit3-ant)
+	- Under junitDev folder, create the following folders  
+	  - Create src folder for *.java files
+          - Create build/classes folder for *.class files
+          - Create lib folder for junit.jar library. This is the jar copied from 
+            the JUnit installation
+          - Create ant file, build.xml, myBuild.xml, and put them in the junitDev  
+              folder 
+
+4.	Create Ant (build.xml, myBuild.xml) file
+	* Ant file should contains the following tasks (targets)
+	    - Setup properties
+            - Setup class path
+            - Remove destination directory (build folder)   
+            - Compile *.java files (application and JUnit test case classes) under the 
+              src folder
+            - Run JUnit test cases  
+
+5.	Run ant file ( build.xml, and myBuild.xml)  from the command-line
+
+
+
